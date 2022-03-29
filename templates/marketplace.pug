@@ -1,0 +1,27 @@
+extends base.pug
+
+
+
+block content
+    h4 Marketplace
+    p Data on this page is loaded on server side and passed to pug template that handles the rendering.
+
+    div.container-fluid
+        div.row
+
+            div.col-md-12
+                div.row#markets
+                    -for(var prop in json)
+                        div.col-md-3.market-box
+                            div.row
+                                div.offset-md-1.col-md-10.market-item
+                                    if json[prop]['type_name']
+                                        p #{json[prop]['type_name']}
+                                    else
+                                        p.red ITEM UNKNOWN
+                                    span AVG Price: 
+                                        span.bold #{json[prop]['average_price']}
+                                    br
+                                    span ADJ Price: 
+                                        span.bold #{json[prop]['adjusted_price']}
+
